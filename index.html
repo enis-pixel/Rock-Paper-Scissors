@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+    <script src="main.js" defer></script>
+    <title>Rock, Paper, Scissors</title>
+
+    <style>
+        body{
+            text-align: center;
+        }
+
+        #caption{
+            font-family: 'Black Ops One', cursive;
+            font-size: 30pt;
+            background-color: rgb(255, 102, 0);
+        }
+
+        #grid-container1{
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+
+        #grid-container2{
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+
+        #ergebnis {
+            font-size: 24pt;
+            text-align: center;
+        }
+
+        #buttons img{
+            width: 50px;
+            transition: transform .2s;
+        }
+
+        #buttons img:hover{
+            transform: scale(1.2);
+        }
+
+        #output img{
+            width: 50px;
+        }
+
+        #replay{
+            font-size: 16pt;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="caption">Rock, Paper, Scissors</h1>
+    <br>
+
+    <div id="grid-container1">
+        <h1>You:</h1>
+        <h1>Computer:</h1>
+
+        <div id="buttons">
+            <button id="rock" value="rock" name="rock"><img src="images/rock.png" alt="rock"></button>
+            <button id="paper" value="paper" name="paper"><img src="images/paper.png" alt="paper"></button>
+            <button id="scissors" value="scissors" name="scissors"><img src="images/scissors.png" alt="scissors"></button>
+        </div>
+
+        <div id="output"></div>
+    </div>
+        
+    <br><br><br><br>
+
+    <div id="grid-container2">
+        <h1 id="you">0</h1>
+        <h1>:</h1>
+        <h1 id="computer">0</h1>
+    </div>
+
+    <div id="ergebnis"></div>
+
+    <br><br>
+
+    <input id="replay" type="button" value="Replay!" onClick="window.location.reload(true)">
+</body>
+</html>
