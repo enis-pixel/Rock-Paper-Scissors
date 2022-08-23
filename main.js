@@ -1,5 +1,6 @@
 let array = ["rock", "paper", "scissors"];
 
+
 let input = document.getElementById("buttons");
 let rock = document.getElementById("rock");
 let paper = document.getElementById("paper");
@@ -8,6 +9,34 @@ let output = document.getElementById("output");
 let you = document.getElementById("you");
 let computer = document.getElementById("computer");
 let ergebnis = document.getElementById("ergebnis");
+
+
+if (localStorage.getItem("isDarkMode") === "true") {
+    document.body.classList.add("dark-mode");
+}
+
+
+var theme = getComputedStyle(document.body);
+var themeBackgroundColor = theme.backgroundColor.toString();
+
+
+document.getElementById("dark-mode").addEventListener("click", function(){
+    document.body.classList.toggle("dark-mode");
+
+    theme = getComputedStyle(document.body);
+    themeBackgroundColor = theme.backgroundColor.toString();
+
+    checkTheme();
+})
+
+
+function checkTheme(){
+    if(themeBackgroundColor === "rgb(0, 0, 0)"){
+        localStorage.setItem("isDarkMode", true);
+    } else{
+        localStorage.setItem("isDarkMode", false);
+    }
+}
 
 
 rock.addEventListener("click", function(event) {
@@ -21,6 +50,7 @@ paper.addEventListener("click", function(event) {
 scissors.addEventListener("click", function(event) {
     clickEvent(scissors);
 })
+
 
 function clickEvent(element){
     var random = Math.floor(Math.random() * array.length);
@@ -76,7 +106,7 @@ function clickEvent(element){
     if(you.innerHTML == 3 && you.innerHTML > computer.innerHTML){
         ergebnis.innerHTML = "You won the game!";
         document.getElementById("output").innerHTML = " ";
-        ergebnis.style.backgroundColor = "#29EF8C";
+        ergebnis.style.color = "#004f15";
         löschen();
         chooseOutputImg();
         chooseInputImg();
@@ -84,7 +114,7 @@ function clickEvent(element){
 
     if(computer.innerHTML == 3 && computer.innerHTML > you.innerHTML){
         ergebnis.innerHTML = "The computer won the game!";
-        ergebnis.style.backgroundColor = "#FF6984";
+        ergebnis.style.color = "#820000"; 
         löschen();
         chooseOutputImg();
         chooseInputImg();
