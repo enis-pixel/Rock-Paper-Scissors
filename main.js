@@ -116,6 +116,7 @@ function clickEvent(element){
         ergebnis.innerHTML = "You won the game!";
         document.getElementById("output").innerHTML = " ";
         ergebnis.style.color = "#004f15";
+        buttons.style.pointerEvents = "none";
         löschen();
         chooseOutputImg();
         chooseInputImg();
@@ -127,6 +128,7 @@ function clickEvent(element){
     if(computer.innerHTML == 3 && computer.innerHTML > you.innerHTML){
         ergebnis.innerHTML = "The computer won the game!";
         ergebnis.style.color = "#820000"; 
+        buttons.style.pointerEvents = "none";
         löschen();
         chooseOutputImg();
         chooseInputImg();
