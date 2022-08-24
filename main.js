@@ -10,9 +10,11 @@ let you = document.getElementById("you");
 let computer = document.getElementById("computer");
 let ergebnis = document.getElementById("ergebnis");
 
+document.body.style.overflow = 'hidden';
 
 if (localStorage.getItem("isDarkMode") === "true") {
     document.body.classList.add("dark-mode");
+    document.getElementById("dark-mode").setAttribute("Checked", "checked");
 }
 
 
@@ -31,7 +33,7 @@ document.getElementById("dark-mode").addEventListener("click", function(){
 
 
 function checkTheme(){
-    if(themeBackgroundColor === "rgb(0, 0, 0)"){
+    if(themeBackgroundColor === "rgb(54, 49, 49)"){
         localStorage.setItem("isDarkMode", true);
     } else{
         localStorage.setItem("isDarkMode", false);
@@ -40,17 +42,24 @@ function checkTheme(){
 
 
 rock.addEventListener("click", function(event) {
+    clickSound();
     clickEvent(rock);
 })
 
 paper.addEventListener("click", function(event) {
+    clickSound();
     clickEvent(paper);
 })
 
 scissors.addEventListener("click", function(event) {
+    clickSound();
     clickEvent(scissors);
 })
 
+function clickSound(){
+    const audio = new Audio("sounds/click.wav");
+    audio.play();
+}
 
 function clickEvent(element){
     var random = Math.floor(Math.random() * array.length);
@@ -110,6 +119,9 @@ function clickEvent(element){
         löschen();
         chooseOutputImg();
         chooseInputImg();
+
+        const audio = new Audio("sounds/win.wav");
+        audio.play();
     }
 
     if(computer.innerHTML == 3 && computer.innerHTML > you.innerHTML){
@@ -118,6 +130,9 @@ function clickEvent(element){
         löschen();
         chooseOutputImg();
         chooseInputImg();
+
+        const audio = new Audio("sounds/lose.wav");
+        audio.play();  
     }
 
     function löschen() {
@@ -126,5 +141,11 @@ function clickEvent(element){
         while (buttons.hasChildNodes()) {
           buttons.removeChild(buttons.firstChild);
         }
+    }
+
+    function disableScrolling(){
+        var x=window.scrollX;
+        var y=window.scrollY;
+        window.onscroll=function(){window.scrollTo(x, y);};
     }
 }
